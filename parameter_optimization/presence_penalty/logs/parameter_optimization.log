@@ -1,0 +1,9 @@
+2023-05-26 12:01:08,652 {'max_tokens': 800, 'temperature': 1, 'top_p': 1, 'n': 1, 'stream': False, 'logprobs': None, 'echo': False, 'stop': None, 'presence_penalty': 0.0, 'frequency_penalty': 0, 'best_of': 1, 'logit_bias': None}
+2023-05-26 12:02:05,681 Write a concise, academic, five-hundred-word argumentative essay discussing 'Does technology play a role in making people feel more isolated?'
+2023-05-31 12:41:56,095 Scores for presence_penalty = presence_penalty_0.0: [100, 76, 100, 0, 100]
+2023-05-31 12:41:56,096 Scores for presence_penalty = presence_penalty_0.1: [100, 100, 0, 88, 100]
+2023-05-31 12:41:56,105 Scores for presence_penalty = presence_penalty_0.2: [100, 46, 100, 100, 100]
+2023-05-31 12:41:56,105 Scores for presence_penalty = presence_penalty_0.3: [100, 100, None, 100, 85]
+2023-05-31 12:42:57,198 Scores for presence_penalty = presence_penalty_0.4: [100, 26, 100, None, 100]
+2023-05-31 12:44:06,652 Scores for presence_penalty = presence_penalty_0.5: [63, 56, 93, None, 100]
+2023-05-31 12:45:08,781 Scores for presence_penalty = presence_penalty_0.6: [100, 0, None, 41, 100]

@@ -1,0 +1,10 @@
+scores_openai_standard,possibly,unclear if it is,likely,likely,likely,likely,possibly,possibly,likely,possibly
+scores_openai_explanation,likely,likely,likely,likely,likely,likely,possibly,unclear if it is,likely,likely
+scores_openai_perplexity,possibly,unclear if it is,possibly,unclear if it is,possibly,likely,likely,likely,likely,likely
+scores_openai_burstiness,likely,likely,likely,likely,likely,likely,likely,unclear if it is,unclear if it is,likely
+scores_openai_both,likely,likely,likely,likely,possibly,possibly,unlikely,likely,likely,likely
+scores_openai_regen_standard,possibly,unclear if it is,possibly,possibly,unclear if it is,possibly,possibly,possibly,possibly,possibly
+scores_openai_regen_explanation,unclear if it is,unclear if it is,likely,likely,unclear if it is,possibly,likely,unclear if it is,unclear if it is,possibly
+scores_openai_regen_perplexity,likely,very unlikely,unclear if it is,unclear if it is,unclear if it is,possibly,unclear if it is,possibly,possibly,unclear if it is
+scores_openai_regen_burst,unclear if it is,unclear if it is,possibly,unclear if it is,unclear if it is,unclear if it is,likely,unlikely,possibly,unclear if it is
+scores_openai_regen_both,unclear if it is,possibly,possibly,unclear if it is,unclear if it is,unclear if it is,unlikely,unclear if it is,unlikely,likely

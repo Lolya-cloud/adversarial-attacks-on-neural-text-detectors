@@ -1,0 +1,4 @@
+scores_openai_normal,likely,likely,unclear if it is,possibly,likely,likely,possibly,likely,possibly,likely
+scores_openai_smart,possibly,unclear if it is,unclear if it is,very unlikely,unclear if it is,possibly,possibly,unlikely,very unlikely,possibly
+scores_openai_normal_regen,possibly,possibly,very unlikely,likely,unclear if it is,unclear if it is,likely,likely,unclear if it is,likely
+scores_openai_smart_regen,possibly,unlikely,unclear if it is,unclear if it is,likely,possibly,unclear if it is,unclear if it is,possibly,unclear if it is

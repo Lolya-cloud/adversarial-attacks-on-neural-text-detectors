@@ -1,0 +1,10 @@
+scores_turnitin_standard,100,0,72,100,100,100,100,100,100,100
+scores_turnitin_explanation,100,100,100,100,100,100,100,75,100,100
+scores_turnitin_perplexity,100,0,31,100,88,100,100,64,100,100
+scores_turnitin_burstiness,100,100,100,100,100,100,100,81,50,100
+scores_turnitin_both,100,100,100,100,0,25,53,100,100,100
+scores_turnitin_regen_standard,100,100,38,100,33,100,77,20,42,0
+scores_turnitin_regen_explanation,3,80,100,100,88,65,100,77,100,100
+scores_turnitin_regen_perplexity,100,0,0,86,90,0,67,82,47,48
+scores_turnitin_regen_burst,0,90,86,100,100,100,100,0,71,76
+scores_turnitin_regen_both,100,0,0,100,52,0,0,0,0,38
