@@ -6,6 +6,7 @@ from scipy.stats import shapiro
 import os
 import csv
 
+
 results_path = "C:/Users/vital/PycharmProjects/M12Project/char_mutation/results"
 
 
@@ -99,13 +100,76 @@ score_types = ['standard', 'latin_a', 'latin_e', 'latin_replace_l']
 
 # strip off 'scores_' prefix and split the remaining key into detector_name and score_type
 adjusted_scores = {'_'.join(k.split('_')[1:]): v for k, v in scores.items()}
-
+print(adjusted_scores)
 for detector in detectors:
     # create a subset of the scores dictionary for each detector
     detector_scores = {"_".join(k.split("_")[1:]): v for k, v in adjusted_scores.items() if k.startswith(detector)}
 
     # plot the distribution and boxplot for each detector
     plot_distribution_and_boxplot(detector_scores, detector)
+
+
+def generate_statistics(dictionary):
+    statistics = []
+
+    for key in dictionary:
+        detector, group = key.split('_', 1)  # split key into detector and group at the last underscore
+        print(detector)
+        print(group)
+        stats = {
+            'detector': detector,
+            'group': group,
+            'mean': np.mean(dictionary[key]),
+            'standard deviation': np.std(dictionary[key]),
+            'median': np.median(dictionary[key]),
+            'min': np.min(dictionary[key]),
+            'max': np.max(dictionary[key])
+        }
+        statistics.append(stats)
+
+    df = pd.DataFrame(statistics)
+    df.set_index(['detector', 'group'], inplace=True)  # Set MultiIndex using detector and group
+    return df
+
+stats_df = generate_statistics(adjusted_scores)
+mean_df = stats_df.reset_index()  # Reset the index
+mean_df = mean_df[['detector', 'group', 'mean']]  # Keep only necessary columns
+
+pivot_df = mean_df.pivot(index='group', columns='detector', values='mean')  # Pivot the DataFrame
+turnitin_dict = {
+    'turnitin_standard': [100.0, 74.0, 100.0, 100.0, 100.0, 100.0, 54.0, 26.0, 100.0, 0.0],
+    'turnitin_latin_replace_l': [0.0, 0.0, 21.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+
+turnitin_stats = generate_statistics(turnitin_dict)  # Assuming the same function you used to generate initial stats
+
+# Now merge it with the original stats
+stats_df = pd.concat([stats_df, turnitin_stats])
+
+# Now keep only mean values
+mean_df = stats_df.reset_index()
+mean_df = mean_df[['detector', 'group', 'mean']]
+
+pivot_df = mean_df.pivot(index='group', columns='detector', values='mean')  # Pivot the DataFrame
+
+# Replace missing values with 'Flag's
+pivot_df = pivot_df.fillna('Flag')
+
+# Rename group names
+group_names = {
+    'latin_a': 'replace a latin-cyrilic',
+    'latin_e': 'replace e latin-cyrilic',
+    'latin_replace_l': 'replace l - i(uppercase) latin'
+}
+pivot_df = pivot_df.rename(index=group_names)
+
+detector_columns = ['openai', 'gpt2']
+for column in detector_columns:
+    # Check if column exists in DataFrame
+    if column in pivot_df.columns:
+        pivot_df[column] = pivot_df[column].apply(lambda x: x if isinstance(x, str) else round(x * 100))
+latex_table = pivot_df.to_latex()
+print(latex_table)
 
 # plot the histograms for all detectors and score types
 plot_histograms(adjusted_scores, detectors, score_types)

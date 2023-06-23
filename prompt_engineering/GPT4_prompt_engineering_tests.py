@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy.stats import shapiro, levene, ttest_ind, mannwhitneyu
 import os
+import pandas as pd
 
 results_path = "C:/Users/vital/PycharmProjects/M12Project/prompt_engineering/results"
 
@@ -136,6 +137,12 @@ def plot_boxplots(scores, detector_names, score_types):
         plt.close()
 
 
+def calculate_means(list1, list2):
+    mean1 = round(sum(list1) / len(list1))
+    mean2 = round(sum(list2) / len(list2))
+    return mean1, mean2
+
+
 scores = load_scores_from_csv(res_dir=results_path)
 print(scores)
 detector_names = ['openai', 'gpt2', 'turnitin']
@@ -146,3 +153,12 @@ for detector in detector_names:
 
 plot_histograms(scores, detector_names, score_types)
 plot_boxplots(scores, detector_names, score_types)
+
+mean_scores_df = pd.DataFrame(index=detector_names, columns=score_types)
+
+for detector in detector_names:
+    mean_scores = calculate_means(scores[f"scores_{detector}_normal"], scores[f"scores_{detector}_smart"])
+    mean_scores_df.loc[detector] = mean_scores
+mean_scores_df = mean_scores_df.T
+# Print DataFrame in LaTeX format
+print(mean_scores_df.to_latex())

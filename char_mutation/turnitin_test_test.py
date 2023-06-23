@@ -101,7 +101,7 @@ print(scores)
 
 # strip off 'scores_' prefix and split the remaining key into detector_name and score_type
 adjusted_scores = {'_'.join(k.split('_')[1:]): v for k, v in scores.items()}
-
+print(adjusted_scores)
 for detector in detectors:
     # create a subset of the scores dictionary for each detector
     detector_scores = {"_".join(k.split("_")[1:]): v for k, v in adjusted_scores.items() if k.startswith(detector)}
